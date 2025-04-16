@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+:root {
+  --background: #fffbfb;
+  --foreground: #333333;
+  --primary: #f4c5c5;
+  --secondary: #f9e4e4;
+  --accent: #d88a95;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --gold: #d4af37;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-cormorant), serif;
+  background-image: 
+    linear-gradient(to right, rgba(249, 228, 228, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 228, 228, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.dancing-script {
+  font-family: var(--font-dancing-script), cursive;
+}
+
+.playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+/* Elegant divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(216, 138, 149, 0.2) 20%,
+    rgba(216, 138, 149, 0.3) 50%,
+    rgba(216, 138, 149, 0.2) 80%,
+    transparent 100%
+  );
+  margin: 1.5rem auto;
+  width: 100%;
+  opacity: 0.4;
+}
+
+/* Gold accent for important elements */
+.gold-accent {
+  color: var(--gold);
+}
+
+/* Custom dropdown appearance */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply px-8 py-2.5 bg-transparent text-[#333333] rounded-none transition-all duration-300 
+    hover:bg-transparent hover:text-[#d88a95] font-normal tracking-wider text-sm
+    border-none hover:border-none transform-none uppercase;
+  }
+  
+  .input-field {
+    @apply px-4 py-2.5 border border-[#f4c5c5] rounded-lg w-full focus:outline-none 
+    focus:ring-2 focus:ring-[#d88a95] bg-white/90 text-[#333333] tracking-wide;
+  }
+
+  .card-elegant {
+    @apply backdrop-blur-sm px-8 py-10 md:px-12 md:py-12 rounded-3xl
+    border border-white/10 bg-white/98 shadow-[0_10px_40px_-5px_rgba(216,138,149,0.15)];
+  }
+
+  .modal-card {
+    @apply bg-white rounded-2xl max-w-md w-full shadow-xl overflow-hidden;
+  }
+
+  .form-input {
+    @apply w-full border-b border-[#d88a95]/20 px-0 py-2 text-[#333333] bg-transparent 
+    focus:outline-none focus:border-[#d88a95]/40 transition-colors placeholder-[#666666]/40;
+  }
+
+  .form-label {
+    @apply block text-[#333333] text-xs tracking-widest uppercase font-light;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .elegant-shadow {
+    box-shadow: 
+      0 10px 25px -5px rgba(216, 138, 149, 0.1),
+      0 25px 50px -12px rgba(216, 138, 149, 0.05);
+  }
+
+  /* Typography utilities */
+  .elegant-heading {
+    @apply tracking-wide font-light;
+    letter-spacing: 0.05em;
+  }
+
+  .uppercase-spaced {
+    @apply uppercase tracking-[0.2em] text-xs font-light;
+  }
+}
